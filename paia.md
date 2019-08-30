@@ -445,7 +445,7 @@ A **document** is a key-value structure with the following fields:
  name         occ    data type             description
 ------------- ----- --------------------- ------------------------------------------------------------------
  status       1..1   service status        status (0, 1, 2, 3, 4, or 5)
- item         0..1   URI                   URI of a particular copy
+ item         1..1   URI                   URI of a particular copy (also used as identifier of loan object)
  edition      0..1   URI                   URI of a the document (no particular copy)
  requested    0..1   URI                   URI that was originally requested
  about        0..1   string                textual description of the document
@@ -998,12 +998,12 @@ scope
 response fields
   :  name          occ    data type   description
     ------------- ------ ----------- ---------------------------------------------------------------
-     amount        0..1   money       sum of all fees. May also be negative.
+     amount        1..1   money       sum of all fees. May also be negative. (A value of zero identifies an empty list of fees as valid)  
      fee           0..n   array       list of fees
      fee.amount    1..1   money       amount of a single fee
      fee.date      0..1   date        date when the fee was claimed
      fee.about     0..1   string      textual information about the fee
-     fee.item      0..1   URI         item that caused the fee
+     fee.item      0..1   URI         item that caused the fee (
      fee.edition   0..1   URI         edition that caused the fee
      fee.feetype   0..1   string      textual description of the type of service that caused the fee
      fee.feeid     0..1   URI         URI of the type of service that caused the fee
